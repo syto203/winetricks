@@ -8550,6 +8550,32 @@ load_dotnetcoredesktop5()
 
 #----------------------------------------------------------------
 
+w_metadata dotnetcoredesktop6 dlls \
+    title="MS .NET Core Desktop Runtime 6.0 LTS" \
+    publisher="Microsoft" \
+    year="2021" \
+    media="download" \
+    file1="windowsdesktop-runtime-6.0.0-win-x86.exe" \
+    installed_file1="${W_PROGRAMS_WIN}/dotnet/dotnet.exe"
+
+load_dotnetcoredesktop6()
+{
+    # Official version. See https://dotnet.microsoft.com/download/dotnet/6.0
+    w_download https://download.visualstudio.microsoft.com/download/pr/a1ca7d0d-ce01-4878-b952-3fa1e6d9a7c6/e386db367490b631b8c013a9fb0f3794/windowsdesktop-runtime-6.0.0-win-x86.exe
+
+    w_try_cd "${W_CACHE}"/"${W_PACKAGE}"
+    w_try "${WINE}" "${file1}" ${W_OPT_UNATTENDED:+/quiet}
+
+    if [ "${W_ARCH}" = "win64" ]; then
+        # Also install the 64-bit version
+        w_download https://download.visualstudio.microsoft.com/download/pr/a865ccae-2219-4184-bcd6-0178dc580589/ba452d37e8396b7a49a9adc0e1a07e87/windowsdesktop-runtime-6.0.0-win-x64.exe
+
+        w_try_cd "${WINE}" "windowsdesktop-runtime-6.0.0-win-x64.exe" ${W_OPT_UNATTENDED:+/install /quiet /norestart}
+    fi
+}
+
+#----------------------------------------------------------------
+
 w_metadata dotnet_verifier dlls \
     title="MS .NET Verifier" \
     publisher="Microsoft" \
