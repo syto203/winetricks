@@ -7065,6 +7065,358 @@ load_dxtrans()
 
 #----------------------------------------------------------------
 
+w_metadata dxvk1070_macOS dlls \
+    title="Vulkan-based D3D10/D3D11 implementation for macOS / Wine (1.7)" \
+    publisher="Philip Rebohle / CodeWeavers" \
+    year="2021" \
+    media="download" \
+    file1="../dxvk/dxvk-macOS-1.7.tar.gz" \
+    installed_file1="${W_SYSTEM64_DLLS_WIN64}/dxgi.dll" \
+    installed_file2="${W_SYSTEM64_DLLS_WIN64}/d3d11.dll" \
+    installed_file3="${W_SYSTEM64_DLLS_WIN64}/d3d10.dll" \
+    installed_file4="${W_SYSTEM64_DLLS_WIN64}/d3d10_1.dll" \
+    installed_file5="${W_SYSTEM64_DLLS_WIN64}/d3d10core.dll" \
+    homepage="https://github.com/Gcenx/DXVK-macOS" \
+
+load_dxvk1070_macOS()
+{
+    # MoltenVK uses the Metal API for Vulkan on macOS so 64Bit only
+    w_package_unsupported_win32
+
+    if w_wine_version_in ,5.0 ; then
+        w_die "${W_PACKAGE} requires wine version 5.0 (or newer)"
+    fi
+
+    w_download_to dxvk https://github.com/Gcenx/DXVK-macOS/releases/download/v1.7/dxvk-macOS-1.7.tar.gz de39d8b4c16a8d9e1f5bcd169c1fe0aa9e32ae650bdfab0506da407ff880784a
+
+    w_try_cd "${W_TMP}"
+    w_try tar -xf "${W_CACHE}/dxvk/dxvk-macOS-1.7.tar.gz"
+    w_try_cp_dll "${W_TMP}"/dxvk-macOS-1.7/x64/dxgi.dll "${W_SYSTEM64_DLLS}"/dxgi.dll
+    w_try_cp_dll "${W_TMP}"/dxvk-macOS-1.7/x64/d3d11.dll "${W_SYSTEM64_DLLS}"/d3d11.dll
+    w_try_cp_dll "${W_TMP}"/dxvk-macOS-1.7/x64/d3d10.dll "${W_SYSTEM64_DLLS}"/d3d10.dll
+    w_try_cp_dll "${W_TMP}"/dxvk-macOS-1.7/x64/d3d10_1.dll "${W_SYSTEM64_DLLS}"/d3d10_1.dll
+    w_try_cp_dll "${W_TMP}"/dxvk-macOS-1.7/x64/d3d10core.dll "${W_SYSTEM64_DLLS}"/d3d10core.dll
+
+    # This setting is required as we only use the 64Bit dlls
+    # overriding to "native" like Linux will break 32Bit
+    w_override_dlls native,builtin \
+        dxgi \
+        d3d11 \
+        d3d10 \
+        d3d10_1 \
+        d3d10core
+}
+
+#----------------------------------------------------------------
+
+w_metadata dxvk1090_macOS dlls \
+    title="Vulkan-based D3D10/D3D11 implementation for macOS / Wine (1.9)" \
+    publisher="Philip Rebohle / CodeWeavers" \
+    year="2021" \
+    media="download" \
+    file1="../dxvk/dxvk-macOS-1.9.tar.gz" \
+    installed_file1="${W_SYSTEM64_DLLS_WIN64}/dxgi.dll" \
+    installed_file2="${W_SYSTEM64_DLLS_WIN64}/d3d11.dll" \
+    installed_file3="${W_SYSTEM64_DLLS_WIN64}/d3d10.dll" \
+    installed_file4="${W_SYSTEM64_DLLS_WIN64}/d3d10_1.dll" \
+    installed_file5="${W_SYSTEM64_DLLS_WIN64}/d3d10core.dll" \
+    homepage="https://github.com/Gcenx/DXVK-macOS" \
+
+load_dxvk1090_macOS()
+{
+    # MoltenVK uses the Metal API for Vulkan on macOS so 64Bit only
+    w_package_unsupported_win32
+
+    if w_wine_version_in ,5.14 ; then
+        w_die "${W_PACKAGE} requires wine version 5.14 (or newer)"
+    fi
+
+    w_download_to dxvk https://github.com/Gcenx/DXVK-macOS/releases/download/v1.9/dxvk-macOS-1.9.tar.gz 2a612a58acf9279e3cca40cc40d92d0ab75cc6afe8ceb96df47ad10e09a8817a
+
+    w_try_cd "${W_TMP}"
+    w_try tar -xf "${W_CACHE}/dxvk/dxvk-macOS-1.9.tar.gz"
+    w_try_cp_dll "${W_TMP}"/dxvk-macOS-1.9/x64/dxgi.dll "${W_SYSTEM64_DLLS}"/dxgi.dll
+    w_try_cp_dll "${W_TMP}"/dxvk-macOS-1.9/x64/d3d11.dll "${W_SYSTEM64_DLLS}"/d3d11.dll
+    w_try_cp_dll "${W_TMP}"/dxvk-macOS-1.9/x64/d3d10.dll "${W_SYSTEM64_DLLS}"/d3d10.dll
+    w_try_cp_dll "${W_TMP}"/dxvk-macOS-1.9/x64/d3d10_1.dll "${W_SYSTEM64_DLLS}"/d3d10_1.dll
+    w_try_cp_dll "${W_TMP}"/dxvk-macOS-1.9/x64/d3d10core.dll "${W_SYSTEM64_DLLS}"/d3d10core.dll
+
+    # This setting is required as we only use the 64Bit dlls
+    # overriding to "native" like Linux will break 32Bit
+    w_override_dlls native,builtin \
+        dxgi \
+        d3d11 \
+        d3d10 \
+        d3d10_1 \
+        d3d10core
+}
+
+#----------------------------------------------------------------
+
+w_metadata dxvk1091_macOS dlls \
+    title="Vulkan-based D3D10/D3D11 implementation for macOS / Wine (1.9.1)" \
+    publisher="Philip Rebohle / CodeWeavers" \
+    year="2021" \
+    media="download" \
+    file1="../dxvk/dxvk-macOS-1.9.1.tar.gz" \
+    installed_file1="${W_SYSTEM64_DLLS_WIN64}/dxgi.dll" \
+    installed_file2="${W_SYSTEM64_DLLS_WIN64}/d3d11.dll" \
+    installed_file3="${W_SYSTEM64_DLLS_WIN64}/d3d10.dll" \
+    installed_file4="${W_SYSTEM64_DLLS_WIN64}/d3d10_1.dll" \
+    installed_file5="${W_SYSTEM64_DLLS_WIN64}/d3d10core.dll" \
+    homepage="https://github.com/Gcenx/DXVK-macOS" \
+
+load_dxvk1091_macOS()
+{
+    # MoltenVK uses the Metal API for Vulkan on macOS so 64Bit only
+    w_package_unsupported_win32
+
+    if w_wine_version_in ,5.14 ; then
+        w_die "${W_PACKAGE} requires wine version 5.14 (or newer)"
+    fi
+
+    w_download_to dxvk https://github.com/Gcenx/DXVK-macOS/releases/download/v1.9.1/dxvk-macOS-1.9.1.tar.gz 4f2893fc02a20d645712db4c1868a70f43c231779dbcea2962cb50dfaf4bbeeb
+
+    w_try_cd "${W_TMP}"
+    w_try tar -xf "${W_CACHE}/dxvk/dxvk-macOS-1.9.1.tar.gz"
+    w_try_cp_dll "${W_TMP}"/dxvk-macOS-1.9.1/x64/dxgi.dll "${W_SYSTEM64_DLLS}"/dxgi.dll
+    w_try_cp_dll "${W_TMP}"/dxvk-macOS-1.9.1/x64/d3d11.dll "${W_SYSTEM64_DLLS}"/d3d11.dll
+    w_try_cp_dll "${W_TMP}"/dxvk-macOS-1.9.1/x64/d3d10.dll "${W_SYSTEM64_DLLS}"/d3d10.dll
+    w_try_cp_dll "${W_TMP}"/dxvk-macOS-1.9.1/x64/d3d10_1.dll "${W_SYSTEM64_DLLS}"/d3d10_1.dll
+    w_try_cp_dll "${W_TMP}"/dxvk-macOS-1.9.1/x64/d3d10core.dll "${W_SYSTEM64_DLLS}"/d3d10core.dll
+
+    # This setting is required as we only use the 64Bit dlls
+    # overriding to "native" like Linux will break 32Bit
+    w_override_dlls native,builtin \
+        dxgi \
+        d3d11 \
+        d3d10 \
+        d3d10_1 \
+        d3d10core
+}
+
+#----------------------------------------------------------------
+
+w_metadata dxvk1092_macOS dlls \
+    title="Vulkan-based D3D10/D3D11 implementation for macOS / Wine (1.9.2)" \
+    publisher="Philip Rebohle / CodeWeavers" \
+    year="2021" \
+    media="download" \
+    file1="../dxvk/dxvk-macOS-1.9.2.tar.gz" \
+    installed_file1="${W_SYSTEM64_DLLS_WIN64}/dxgi.dll" \
+    installed_file2="${W_SYSTEM64_DLLS_WIN64}/d3d11.dll" \
+    installed_file3="${W_SYSTEM64_DLLS_WIN64}/d3d10.dll" \
+    installed_file4="${W_SYSTEM64_DLLS_WIN64}/d3d10_1.dll" \
+    installed_file5="${W_SYSTEM64_DLLS_WIN64}/d3d10core.dll" \
+    homepage="https://github.com/Gcenx/DXVK-macOS" \
+
+load_dxvk1092_macOS()
+{
+    # MoltenVK uses the Metal API for Vulkan on macOS so 64Bit only
+    w_package_unsupported_win32
+
+    if w_wine_version_in ,5.14 ; then
+        w_die "${W_PACKAGE} requires wine version 5.14 (or newer)"
+    fi
+
+    w_download_to dxvk https://github.com/Gcenx/DXVK-macOS/releases/download/v1.9.2/dxvk-macOS-1.9.2.tar.gz 7b39d425d35246b0ef86e08b600ac427678cfb5dbe4b714bd09e5da7f1156308
+
+    w_try_cd "${W_TMP}"
+    w_try tar -xf "${W_CACHE}/dxvk/dxvk-macOS-1.9.2.tar.gz"
+    w_try_cp_dll "${W_TMP}"/dxvk-macOS-1.9.2/x64/dxgi.dll "${W_SYSTEM64_DLLS}"/dxgi.dll
+    w_try_cp_dll "${W_TMP}"/dxvk-macOS-1.9.2/x64/d3d11.dll "${W_SYSTEM64_DLLS}"/d3d11.dll
+    w_try_cp_dll "${W_TMP}"/dxvk-macOS-1.9.2/x64/d3d10.dll "${W_SYSTEM64_DLLS}"/d3d10.dll
+    w_try_cp_dll "${W_TMP}"/dxvk-macOS-1.9.2/x64/d3d10_1.dll "${W_SYSTEM64_DLLS}"/d3d10_1.dll
+    w_try_cp_dll "${W_TMP}"/dxvk-macOS-1.9.2/x64/d3d10core.dll "${W_SYSTEM64_DLLS}"/d3d10core.dll
+
+    # This setting is required as we only use the 64Bit dlls
+    # overriding to "native" like Linux will break 32Bit
+    w_override_dlls native,builtin \
+        dxgi \
+        d3d11 \
+        d3d10 \
+        d3d10_1 \
+        d3d10core
+}
+
+#----------------------------------------------------------------
+
+w_metadata dxvk1093_macOS dlls \
+    title="Vulkan-based D3D10/D3D11 implementation for macOS / Wine (1.9.3)" \
+    publisher="Philip Rebohle / CodeWeavers" \
+    year="2021" \
+    media="download" \
+    file1="../dxvk/dxvk-macOS-1.9.3.tar.gz" \
+    installed_file1="${W_SYSTEM64_DLLS_WIN64}/dxgi.dll" \
+    installed_file2="${W_SYSTEM64_DLLS_WIN64}/d3d11.dll" \
+    installed_file3="${W_SYSTEM64_DLLS_WIN64}/d3d10.dll" \
+    installed_file4="${W_SYSTEM64_DLLS_WIN64}/d3d10_1.dll" \
+    installed_file5="${W_SYSTEM64_DLLS_WIN64}/d3d10core.dll" \
+    homepage="https://github.com/Gcenx/DXVK-macOS" \
+
+load_dxvk1093_macOS()
+{
+    # MoltenVK uses the Metal API for Vulkan on macOS so 64Bit only
+    w_package_unsupported_win32
+    
+    if w_wine_version_in ,5.14 ; then
+        w_die "${W_PACKAGE} requires wine version 5.14 (or newer)"
+    fi
+
+    w_download_to dxvk https://github.com/Gcenx/DXVK-macOS/releases/download/v1.9.3/dxvk-macOS-1.9.3.tar.gz 74a9b7516d7c8ad4e858ad00201e032dedf3ec8ac180944dfb0af8fce5f402c6
+
+    w_try_cd "${W_TMP}"
+    w_try tar -xf "${W_CACHE}/dxvk/dxvk-macOS-1.9.3.tar.gz"
+    w_try_cp_dll "${W_TMP}"/dxvk-macOS-1.9.3/x64/dxgi.dll "${W_SYSTEM64_DLLS}"/dxgi.dll
+    w_try_cp_dll "${W_TMP}"/dxvk-macOS-1.9.3/x64/d3d11.dll "${W_SYSTEM64_DLLS}"/d3d11.dll
+    w_try_cp_dll "${W_TMP}"/dxvk-macOS-1.9.3/x64/d3d10.dll "${W_SYSTEM64_DLLS}"/d3d10.dll
+    w_try_cp_dll "${W_TMP}"/dxvk-macOS-1.9.3/x64/d3d10_1.dll "${W_SYSTEM64_DLLS}"/d3d10_1.dll
+    w_try_cp_dll "${W_TMP}"/dxvk-macOS-1.9.3/x64/d3d10core.dll "${W_SYSTEM64_DLLS}"/d3d10core.dll
+
+    # This setting is required as we only use the 64Bit dlls
+    # overriding to "native" like Linux will break 32Bit
+    w_override_dlls native,builtin \
+        dxgi \
+        d3d11 \
+        d3d10 \
+        d3d10_1 \
+        d3d10core
+}
+
+#----------------------------------------------------------------
+
+w_metadata dxvk1094_macOS dlls \
+    title="Vulkan-based D3D10/D3D11 implementation for macOS / Wine (1.9.4)" \
+    publisher="Philip Rebohle / CodeWeavers" \
+    year="2021" \
+    media="download" \
+    file1="../dxvk/dxvk-macOS-1.9.4.tar.gz" \
+    installed_file1="${W_SYSTEM64_DLLS_WIN64}/dxgi.dll" \
+    installed_file2="${W_SYSTEM64_DLLS_WIN64}/d3d11.dll" \
+    installed_file3="${W_SYSTEM64_DLLS_WIN64}/d3d10.dll" \
+    installed_file4="${W_SYSTEM64_DLLS_WIN64}/d3d10_1.dll" \
+    installed_file5="${W_SYSTEM64_DLLS_WIN64}/d3d10core.dll" \
+    homepage="https://github.com/Gcenx/DXVK-macOS" \
+
+load_dxvk1094_macOS()
+{
+    # MoltenVK uses the Metal API for Vulkan on macOS so 64Bit only
+    w_package_unsupported_win32
+    
+    if w_wine_version_in ,5.14 ; then
+        w_die "${W_PACKAGE} requires wine version 5.14 (or newer)"
+    fi
+
+    w_download_to dxvk https://github.com/Gcenx/DXVK-macOS/releases/download/v1.9.4/dxvk-macOS-1.9.4.tar.gz 0f03dfcc320c4e189e58758bf0175d09a81b9dcb1c9b1495ae0619b878cad5fc
+
+    w_try_cd "${W_TMP}"
+    w_try tar -xf "${W_CACHE}/dxvk/dxvk-macOS-1.9.4.tar.gz"
+    w_try_cp_dll "${W_TMP}"/dxvk-macOS-1.9.4/x64/dxgi.dll "${W_SYSTEM64_DLLS}"/dxgi.dll
+    w_try_cp_dll "${W_TMP}"/dxvk-macOS-1.9.4/x64/d3d11.dll "${W_SYSTEM64_DLLS}"/d3d11.dll
+    w_try_cp_dll "${W_TMP}"/dxvk-macOS-1.9.4/x64/d3d10.dll "${W_SYSTEM64_DLLS}"/d3d10.dll
+    w_try_cp_dll "${W_TMP}"/dxvk-macOS-1.9.4/x64/d3d10_1.dll "${W_SYSTEM64_DLLS}"/d3d10_1.dll
+    w_try_cp_dll "${W_TMP}"/dxvk-macOS-1.9.4/x64/d3d10core.dll "${W_SYSTEM64_DLLS}"/d3d10core.dll
+
+    # This setting is required as we only use the 64Bit dlls
+    # overriding to "native" like Linux will break 32Bit
+    w_override_dlls native,builtin \
+        dxgi \
+        d3d11 \
+        d3d10 \
+        d3d10_1 \
+        d3d10core
+}
+
+#----------------------------------------------------------------
+
+w_metadata dxvk1100_macOS dlls \
+    title="Vulkan-based D3D10/D3D11 implementation for macOS / Wine (1.10)" \
+    publisher="Philip Rebohle / CodeWeavers" \
+    year="2021" \
+    media="download" \
+    file1="../dxvk/dxvk-macOS-1.10.tar.gz" \
+    installed_file1="${W_SYSTEM64_DLLS_WIN64}/dxgi.dll" \
+    installed_file2="${W_SYSTEM64_DLLS_WIN64}/d3d11.dll" \
+    installed_file3="${W_SYSTEM64_DLLS_WIN64}/d3d10.dll" \
+    installed_file4="${W_SYSTEM64_DLLS_WIN64}/d3d10_1.dll" \
+    installed_file5="${W_SYSTEM64_DLLS_WIN64}/d3d10core.dll" \
+    homepage="https://github.com/Gcenx/DXVK-macOS" \
+
+load_dxvk1100_macOS()
+{
+    # MoltenVK uses the Metal API for Vulkan on macOS so 64Bit only
+    w_package_unsupported_win32
+
+    if w_wine_version_in ,5.14 ; then
+        w_die "${W_PACKAGE} requires wine version 5.14 (or newer)"
+    fi
+
+    w_download_to dxvk https://github.com/Gcenx/DXVK-macOS/releases/download/v1.10/dxvk-macOS-1.10.tar.gz 6c2ca108efe2c10b94cd2d6325d3d2e45fdc1b1c6fed7daf93d3466f69437468
+
+    w_try_cd "${W_TMP}"
+    w_try tar -xf "${W_CACHE}/dxvk/dxvk-macOS-1.10.tar.gz"
+    w_try_cp_dll "${W_TMP}"/dxvk-macOS-1.10/x64/dxgi.dll "${W_SYSTEM64_DLLS}"/dxgi.dll
+    w_try_cp_dll "${W_TMP}"/dxvk-macOS-1.10/x64/d3d11.dll "${W_SYSTEM64_DLLS}"/d3d11.dll
+    w_try_cp_dll "${W_TMP}"/dxvk-macOS-1.10/x64/d3d10.dll "${W_SYSTEM64_DLLS}"/d3d10.dll
+    w_try_cp_dll "${W_TMP}"/dxvk-macOS-1.10/x64/d3d10_1.dll "${W_SYSTEM64_DLLS}"/d3d10_1.dll
+    w_try_cp_dll "${W_TMP}"/dxvk-macOS-1.10/x64/d3d10core.dll "${W_SYSTEM64_DLLS}"/d3d10core.dll
+
+    # This setting is required as we only use the 64Bit dlls
+    # overriding to "native" like Linux will break 32Bit
+    w_override_dlls native,builtin \
+        dxgi \
+        d3d11 \
+        d3d10 \
+        d3d10_1 \
+        d3d10core
+}
+
+#----------------------------------------------------------------
+
+w_metadata dxvk1101_macOS dlls \
+    title="Vulkan-based D3D10/D3D11 implementation for macOS / Wine (1.10.1)" \
+    publisher="Philip Rebohle / CodeWeavers" \
+    year="2021" \
+    media="download" \
+    file1="../dxvk/dxvk-macOS-1.10.1.tar.gz" \
+    installed_file1="${W_SYSTEM64_DLLS_WIN64}/dxgi.dll" \
+    installed_file2="${W_SYSTEM64_DLLS_WIN64}/d3d11.dll" \
+    installed_file3="${W_SYSTEM64_DLLS_WIN64}/d3d10.dll" \
+    installed_file4="${W_SYSTEM64_DLLS_WIN64}/d3d10_1.dll" \
+    installed_file5="${W_SYSTEM64_DLLS_WIN64}/d3d10core.dll" \
+    homepage="https://github.com/Gcenx/DXVK-macOS" \
+
+load_dxvk1101_macOS()
+{
+    # MoltenVK uses the Metal API for Vulkan on macOS so 64Bit only
+    w_package_unsupported_win32
+
+    if w_wine_version_in ,5.14 ; then
+        w_die "${W_PACKAGE} requires wine version 5.14 (or newer)"
+    fi
+
+    w_download_to dxvk https://github.com/Gcenx/DXVK-macOS/releases/download/v1.10.1/dxvk-macOS-1.10.1.tar.gz 8832e0fadfcbb624cacbd2916f3774c97d303b29c0e24708b6195008ba090c99
+
+    w_try_cd "${W_TMP}"
+    w_try tar -xf "${W_CACHE}/dxvk/dxvk-macOS-1.10.1.tar.gz"
+    w_try_cp_dll "${W_TMP}"/dxvk-macOS-1.10.1/x64/dxgi.dll "${W_SYSTEM64_DLLS}"/dxgi.dll
+    w_try_cp_dll "${W_TMP}"/dxvk-macOS-1.10.1/x64/d3d11.dll "${W_SYSTEM64_DLLS}"/d3d11.dll
+    w_try_cp_dll "${W_TMP}"/dxvk-macOS-1.10.1/x64/d3d10.dll "${W_SYSTEM64_DLLS}"/d3d10.dll
+    w_try_cp_dll "${W_TMP}"/dxvk-macOS-1.10.1/x64/d3d10_1.dll "${W_SYSTEM64_DLLS}"/d3d10_1.dll
+    w_try_cp_dll "${W_TMP}"/dxvk-macOS-1.10.1/x64/d3d10core.dll "${W_SYSTEM64_DLLS}"/d3d10core.dll
+
+    # This setting is required as we only use the 64Bit dlls
+    # overriding to "native" like Linux will break 32Bit
+    w_override_dlls native,builtin \
+        dxgi \
+        d3d11 \
+        d3d10 \
+        d3d10_1 \
+        d3d10core
+}
+
+#----------------------------------------------------------------
+
 w_metadata dmusic32 dlls \
     title="MS dmusic32.dll from DirectX user redistributable" \
     publisher="Microsoft" \
