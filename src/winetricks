@@ -5223,6 +5223,12 @@ winetricks_init()
         USERNAME="${LOGNAME}"
     fi
 
+    # When set assume CrossOver
+    if [ -n "${CX_BOTTLE}" ]; then
+        WINEPREFIX="${CX_BOTTLE}"
+        WINE64="wine"
+    fi
+
     # Running Wine as root is (generally) bad, mmkay?
     if [ "$(id -u)" = 0 ]; then
         w_warn "Running Wine/winetricks as root is highly discouraged. See https://wiki.winehq.org/FAQ#Should_I_run_Wine_as_root.3F"
