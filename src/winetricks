@@ -20923,6 +20923,26 @@ _EOF_
 }
 
 #----------------------------------------------------------------
+# Mac Driver - MoltenVK env options
+
+w_metadata moltenvk settings \
+    title="Set MoltenVK env options for DXVK-macOS"
+
+load_moltenvk()
+{
+    cat > "${W_TMP}"/moltenvk.reg <<_EOF_
+REGEDIT4
+
+[HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Control\\Session Manager\\Environment]
+"MVK_ALLOW_METAL_FENCES"="1"
+"MVK_CONFIG_RESUME_LOST_DEVICE"="1"
+"MVK_CONFIG_FULL_IMAGE_VIEW_SWIZZLE"="1"
+
+_EOF_
+    w_try_regedit "${W_TMP_WIN}"\\moltenvk.reg
+}
+
+#----------------------------------------------------------------
 
 w_metadata mackeyremap=both settings \
     title="Enable mapping opt->alt and cmd->ctrl keys for the Mac native driver"
